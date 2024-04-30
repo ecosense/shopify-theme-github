@@ -1,0 +1,768 @@
+
+{% if product %}
+<script>
+  var __productWizRioProduct = {{product | json}};
+  if (typeof __productWizRioProduct === 'object' && __productWizRioProduct !== null) {
+    __productWizRioProduct.options = {{product.options_with_values | json}};
+  }
+  var __productWizRioHasOnlyDefaultVariant = {{product.has_only_default_variant}};
+  var __productWizRioAssets = {{ shop.metafields.productwiz.rio-assets.value | default: shop.metafields.productwiz.rio-assets | json }};
+  if (typeof __productWizRioAssets === 'string') {
+    __productWizRioAssets = JSON.parse(__productWizRioAssets);
+  }
+  var __productWizRioVariantImages = {{ product.metafields.productwiz.rio.value | default: product.metafields.productwiz.rio | json }};
+  var __productWizRioProductOptions = {{ product.metafields.productwiz.rio-options.value | default: product.metafields.productwiz.rio-options | json }};
+  var __productWizRioProductOptionsGroups = {{ shop.metafields.productwiz.rio-options-product-groups.value | json }};
+  var __productWizRioProductOptionsGroupsSupplemental = [
+    {%- for group in shop.metafields.productwiz.rio-options-product-groups.value -%}
+    {
+      id: {{ group.id | json }},
+      selectedProducts: [
+        {%- for selectedProduct in group.selectedProducts -%}
+        {%- assign productId = selectedProduct | times: 1 -%}
+        {%- assign productObj = nil -%}
+        {%- if group.referenceKey != blank and shop.metafields.productwiz[group.referenceKey].value != blank -%}
+          {%- for product in shop.metafields.productwiz[group.referenceKey].value -%}
+            {%- if product.id == productId -%}
+              {% assign productObj = product %}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- assign productObj = all_products[group.selectedProductHandles[forloop.index0]] -%}
+        {%- endif -%}
+        [{{ selectedProduct | json }}, {% if productObj != blank %}{{ productObj.title | json }}, {{ productObj.url | json }}, {{ productObj.price }}, {{ productObj.available }}{% else %}false{% endif %}],
+        {%- endfor -%}
+      ],
+    },
+    {%- endfor -%}
+  ];
+  var __productWizRioProductOptionsSettings = {{ shop.metafields.productwiz.rio-options-settings.value | default: shop.metafields.productwiz.rio-options-settings | json }};
+  if (__productWizRioProductOptions && __productWizRioProductOptionsSettings && !!__productWizRioProductOptionsSettings.translationAppIntegration) {
+    (() => {
+      try {
+        const options = __productWizRioProductOptions;
+        const product = __productWizRioProduct;
+        options.options.forEach((option, index) => {
+          const optionProduct = product.options[index];
+          option.name = optionProduct.name;
+          option.id = optionProduct.name;
+          option.values.forEach((value, index2) => {
+            const valueProduct = optionProduct.values[index2];
+            value.id = valueProduct;
+            value.name = valueProduct;
+            if (
+              value.config.backgroundImage &&
+              typeof value.config.backgroundImage.id === 'string' &&
+              value.config.backgroundImage.id.startsWith('variant-image://')
+            ) {
+              const image = value.config.backgroundImage;
+              const src = image.id.replace('variant-image://', '');
+              const srcJ = JSON.parse(src);
+              srcJ.id = option.id;
+              srcJ.value = value.id;
+              image.id = 'variant-image://' + JSON.stringify(srcJ);
+            }
+          });
+        });
+      } catch (err) {
+        console.log('Failed to re-index for app translation integration:');
+        console.log(err);
+      }
+    })();
+  }
+  var __productWizRioProductOptionsGroupsShop = {{ shop.metafields.productwiz.rio-options-gps.value | default: shop.metafields.productwiz.rio-options-gps | json }};
+  if (__productWizRioProductOptionsGroupsShop && __productWizRioProductOptionsGroupsShop.disabled === true) {
+    __productWizRioProductOptionsGroups = null;
+    __productWizRioProductOptionsGroupsSupplemental = [];
+  }
+  if (!__productWizRioProductOptions && Array.isArray(__productWizRioProductOptionsGroups)) {
+    (() => {
+      try {
+        const productId = `${__productWizRioProduct.id}`;
+        const hasGps = !!__productWizRioProductOptionsGroups.find(x => x.selectedProducts.includes(productId));
+        if (hasGps) {
+          __productWizRioProductOptions = { enabled: true, options: {}, settings: {} };
+        }
+      } catch (err) {
+        console.log('Failed trying to scaffold GPS:');
+        console.log(err);
+      }
+    })();
+  }
+  var __productWizRioShop = {{ shop.metafields.productwiz.rio.value | default: shop.metafields.productwiz.rio | json }};
+  var __productWizRioProductOptionsShop = {{ shop.metafields.productwiz.rio-options.value | default: shop.metafields.productwiz.rio-options | json }};
+  var __productWizRioProductGallery = {{ shop.metafields.productwiz.rio-gallery.value | default: shop.metafields.productwiz.rio-gallery | json }};
+  var __productWizRio = {};
+  var __productWizRioOptions = {};
+  __productWizRio.moneyFormat = {{shop.money_format | json}};
+  __productWizRio.moneyFormatWithCurrency = {{shop.money_with_currency_format | json}};
+  /*rio-start*/
+  __productWizRio.theme = 'debut';
+  (function() {
+    function insertGalleryPlaceholder(e,t){try{var i=__productWizRio.config["breakpoint"];const s="string"==typeof i&&window.matchMedia(`(min-width:${i})`).matches,c=__productWizRio.config[s?"desktop":"mobile"]["vertical"];var o=(()=>{const t=e=>{e=("model"===e.media_type?e.preview_image:e).aspect_ratio;return 1/("number"==typeof e?e:1)};var i=new URL(document.location).searchParams.get("variant")||null;const o=(e=>{const{productRio:t,product:i}=__productWizRio;let o=e;if("string"==typeof o&&(i.variants.find(e=>""+e.id===o)||(o=null)),"string"!=typeof o&&(n=i.variants.find(e=>e.available),o=n?""+n.id:""+i.variants[0].id),!Array.isArray(t)){var l=0<i.media.length?i.media[0]:null,n=i.variants.find(e=>""+e.id===o);if(n){const r=n.featured_media?n.featured_media.id:null;if(r){n=i.media.find(e=>e.id===r);if(n)return n}}return l}{const a=t.find(e=>e.id===o);if(a&&Array.isArray(a.media)&&0<a.media.length)if(c){const d=[];if(a.media.forEach(t=>{var e=i.media.find(e=>""+e.id===t);e&&d.push(e)}),0<d.length)return d}else{const s=a.media[0];l=i.media.find(e=>""+e.id===s);if(l)return l}}return null})(i);if(Array.isArray(o)){i=o.map(e=>t(e));let e=1;return 0<i.length&&(i=Math.max(...i),Number.isFinite(i)&&(e=i)),(100*e).toFixed(3)+"%"}return o?(100*t(o)).toFixed(3)+"%":null})();if("string"!=typeof o)return void console.log("Rio: Gallery placeholder gallery ratio could not be found. Bailing out.");var l=(e=>{var t=__productWizRio.config[s?"desktop":"mobile"]["thumbnails"];if("object"==typeof t){var{orientation:i,container:o,thumbnailWidth:t}=t;if("left"===i||"right"===i){e=Number.parseFloat(e);if(Number.isFinite(e)){e=e/100;if("number"==typeof o){const l=100*o*e;return l.toFixed(3)+"%"}if("number"==typeof t)return t*e+"px"}}}return null})(o),n="string"==typeof l?`calc(${o} - ${l})`:o,r=(()=>{const e=__productWizRio.config[s?"desktop":"mobile"]["maxHeight"];return"string"==typeof e&&e.endsWith("px")&&!c?e:null})(),a="string"==typeof r?`min(${n}, ${r})`:n;const p=document.createElement("div");p.style.display="block",p.style.marginTop="-50px",p.style.pointerEvents="none",p.style.paddingBottom=`calc(${a} + 100px)`,console.log("Rio: Gallery placeholder scale: "+p.style.paddingBottom),p.style.boxSizing="border-box",e.appendChild(p);const g=()=>{p.style.position="absolute",p.style.top=0,p.style.zIndex=-2147483647};document.addEventListener("DOMContentLoaded",()=>{try{0===p.clientHeight&&(console.log("Rio: Gallery placeholder height is 0"),g());var e=`${0===p.clientHeight?window.innerHeight:p.clientHeight}px`;p.style.paddingBottom=null,p.style.overflow="hidden",p.style.height=e,console.log("Rio: Gallery placeholder height: "+p.style.height);const i=document.createElement("span");i.style.whiteSpace="normal",i.style.wordBreak="break-all",i.style.fontSize="20px",i.style.lineHeight=0,i.style.userSelect="none";let t="";for(let e=0;e<1e4;e+=1)t+="  ";i.innerText=t,p.appendChild(i)}catch(e){console.log("Rio: failed to insert gallery placeholder (2)"),console.log(e)}});const u=new MutationObserver(()=>{try{u.disconnect(),console.log("Rio: rio-media-gallery inflated"),g()}catch(e){console.log("Rio: failed to insert gallery placeholder (3)"),console.log(e)}});var d={childList:!0,subtree:!0};u.observe(t,d),window.addEventListener("load",()=>{try{e.removeChild(p)}catch(e){console.log("Rio: failed to remove gallery placeholder"),console.log(e)}})}catch(e){console.log("Rio: failed to insert gallery placeholder"),console.log(e)}}
+    __productWizRio.renderQueue = [];
+
+__productWizRio.queueRender = (...params) => {
+  __productWizRio.renderQueue.push(params);
+
+  if (typeof __productWizRio.processRenderQueue === 'function') {
+    __productWizRio.processRenderQueue();
+  }
+};
+
+__productWizRioOptions.renderQueue = [];
+
+__productWizRioOptions.queueRender = (...params) => {
+  __productWizRioOptions.renderQueue.push(params);
+
+  if (typeof __productWizRioOptions.processRenderQueue === 'function') {
+    __productWizRioOptions.processRenderQueue();
+  }
+};
+
+const delayMs = t => new Promise(resolve => setTimeout(resolve, t));
+
+function debugLog(...x) {
+  console.log(...x);
+}
+
+function injectRioMediaGalleryDiv(newAddedNode, classNames) {
+  const breakpoint = Number.parseInt(__productWizRio.config.breakpoint, 10);
+  const newClassNames = `rio-media-gallery ${classNames || ''}`;
+
+  if (window.innerWidth < breakpoint) {
+    const gallery = document.createElement('div');
+    gallery.className = newClassNames;
+    gallery.style.width = '100%';
+    newAddedNode.style.position = 'relative';
+    newAddedNode.appendChild(gallery);
+    insertGalleryPlaceholder(newAddedNode, gallery);
+    return gallery;
+  }
+
+  newAddedNode.className += ` ${newClassNames}`;
+  return newAddedNode;
+}
+
+function insertRioOptionsTitleStyle(style) {
+  let str = '';
+
+  for (const key of Object.keys(style)) {
+    str += `${key}:${style[key]};`;
+  }
+
+  const styleElem = document.createElement('style');
+  styleElem.textContent = `.rio-product-option-title{${str}}`;
+  document.head.appendChild(styleElem);
+}
+
+function getComputedStyle(selectorStr, props) {
+  return new Promise(resolve => {
+    const func = () => {
+      if (typeof selectorStr !== 'string' || !Array.isArray(props)) {
+        return null;
+      }
+
+      const selectors = selectorStr.split('/');
+      let root = null;
+      let child = null;
+
+      for (const selector of selectors) {
+        const isClassName = selector.startsWith('.');
+        const isId = selector.startsWith('#');
+        const isIdOrClassName = isClassName || isId;
+        const name = isIdOrClassName ? selector.substring(1) : selector;
+        const element = document.createElement(isIdOrClassName ? 'div' : name);
+
+        if (isClassName) {
+          element.classList.add(name);
+        }
+
+        if (isId) {
+          element.id = name;
+        }
+
+        if (root === null) {
+          root = element;
+        } else {
+          child.appendChild(element);
+        }
+
+        child = element;
+      }
+
+      if (root === null) {
+        return null;
+      }
+
+      root.style.position = 'absolute';
+      root.style.zIndex = -100000;
+      const style = {};
+      document.body.appendChild(root);
+      const computedStyle = window.getComputedStyle(child);
+
+      for (const prop of props) {
+        style[prop] = computedStyle.getPropertyValue(prop);
+      }
+
+      document.body.removeChild(root);
+      return style;
+    };
+
+    const safeFunc = () => {
+      try {
+        return func();
+      } catch (err) {
+        debugLog(err);
+        return null;
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        resolve(safeFunc());
+      });
+    } else {
+      resolve(safeFunc());
+    }
+  });
+}
+
+function escapeSelector(selector) {
+  if (typeof selector !== 'string') {
+    return selector;
+  }
+
+  return selector.replace(/"/g, '\\"');
+}
+
+function descendantQuerySelector(child, selector) {
+  if (!child || typeof selector !== 'string') {
+    return null;
+  }
+
+  let node = child.parentNode;
+
+  while (node) {
+    if (typeof node.matches === 'function' && node.matches(selector)) {
+      return node;
+    }
+
+    node = node.parentNode;
+  }
+
+  return null;
+}
+
+function getTheme() {
+  return __productWizRio.theme;
+}
+
+function isPhantom() {
+  const {
+    phantom
+  } = __productWizRioOptions;
+  return !!phantom;
+}
+
+function getBeforeChild(root, beforeChildSelector) {
+  const rootFirstChild = root.firstChild;
+
+  if (!beforeChildSelector) {
+    return {
+      found: true,
+      child: rootFirstChild
+    };
+  }
+
+  const firstChild = typeof beforeChildSelector === 'function' ? beforeChildSelector(root) : root.querySelector(beforeChildSelector);
+
+  if (firstChild) {
+    return {
+      found: true,
+      child: firstChild
+    };
+  }
+
+  return {
+    found: false,
+    child: rootFirstChild
+  };
+}
+
+let injectRioOptionsDivBeforeChildNotFound = null;
+
+function injectRioOptionsDiv(root, config, style = {}, onInjected = () => {}, beforeChildSelector = null, deferredQueue = false) {
+  const rioOptionsClassName = isPhantom() ? 'rio-options-phantom' : 'rio-options';
+
+  if (!document.querySelector(`.${rioOptionsClassName}`)) {
+    debugLog('Inserting rio-options!');
+    const rioOptions = document.createElement('div');
+    rioOptions.className = rioOptionsClassName;
+    rioOptions.style.width = '100%';
+
+    for (const styleItemKey of Object.keys(style)) {
+      rioOptions.style[styleItemKey] = style[styleItemKey];
+    }
+
+    const {
+      child: beforeChild,
+      found
+    } = getBeforeChild(root, beforeChildSelector);
+
+    if (!found) {
+      debugLog(`beforeChildSelector ${beforeChildSelector} not initally found`);
+      injectRioOptionsDivBeforeChildNotFound = rioOptions;
+    }
+
+    root.insertBefore(rioOptions, beforeChild);
+    onInjected(rioOptions);
+
+    if (!deferredQueue) {
+      __productWizRioOptions.queueRender(rioOptions, config);
+    } else {
+      return [rioOptions, config];
+    }
+  }
+
+  if (injectRioOptionsDivBeforeChildNotFound) {
+    const {
+      child: beforeChild,
+      found
+    } = getBeforeChild(root, beforeChildSelector);
+
+    if (found) {
+      debugLog(`beforeChildSelector ${beforeChildSelector} found! Moving node position`);
+      root.insertBefore(injectRioOptionsDivBeforeChildNotFound, beforeChild);
+      injectRioOptionsDivBeforeChildNotFound = null;
+    }
+  }
+
+  return null;
+}
+
+function getCurrentVariantFromUrl() {
+  const url = new URL(window.location);
+  const variant = url.searchParams.get('variant');
+
+  if (variant) {
+    return variant;
+  }
+
+  return null;
+}
+
+const setInitialVariant = (root, selector = 'select[name="id"]') => {
+  const getCurrentVariantFromSelector = () => {
+    const elem = root.querySelector(selector);
+
+    if (elem && elem.value) {
+      return elem.value;
+    }
+
+    return null;
+  };
+
+  const setCurrentVariant = id => {
+    debugLog(`Setting initial variant to ${id}`);
+    __productWizRioOptions.initialSelectedVariantId = id;
+  };
+
+  const currentVariantFromUrl = getCurrentVariantFromUrl();
+
+  if (currentVariantFromUrl) {
+    setCurrentVariant(currentVariantFromUrl);
+    return;
+  }
+
+  const currentVariantFromSelector = getCurrentVariantFromSelector();
+
+  if (currentVariantFromSelector) {
+    setCurrentVariant(currentVariantFromSelector);
+    return;
+  }
+
+  if (document.readyState === 'loading') {
+    const forceUpdateIfNeeded = () => {
+      if (typeof __productWizRioOptions.forceUpdate === 'function') {
+        debugLog('Force updating options (current variant DCL)!');
+
+        __productWizRioOptions.forceUpdate();
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentVariantFromSelectorDcl = getCurrentVariantFromSelector();
+
+      if (currentVariantFromSelectorDcl) {
+        setCurrentVariant(currentVariantFromSelectorDcl);
+        forceUpdateIfNeeded();
+      } else {
+        debugLog('Current variant not found on DOMContentLoaded!');
+      }
+    });
+    return;
+  }
+
+  debugLog('Current variant not found');
+};
+
+function startMutationObserver(options, callback) {
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      callback(mutation);
+    });
+  });
+  observer.observe(document, options);
+  return observer;
+}
+
+function clickInput(elem, eventQueue) {
+  let func;
+
+  if (elem.type === 'radio' || elem.type === 'checkbox') {
+    debugLog('Doing radio change');
+    elem.checked = true;
+
+    func = () => {
+      elem.dispatchEvent(new Event('change', {
+        bubbles: true
+      }));
+    };
+  } else {
+    debugLog('Doing button click');
+
+    func = () => {
+      elem.click();
+    };
+  }
+
+  if (eventQueue) {
+    eventQueue.push(func);
+  } else {
+    func();
+  }
+}
+    const __productWizRioRioV2 = true;
+
+if (!__productWizRio.config) {
+__productWizRio.config = {
+  "breakpoint": "750px",
+  "mobile": {
+    "navigation": false,
+    "pagination": false,
+    "swipe": true,
+    "dark": true,
+    "magnify": false,
+    "thumbnails": {
+      "orientation": "bottom",
+      "multiRow": false,
+      "thumbnailsPerRow": 3,
+      "navigation": true
+    },
+    "lightBox": true,
+    "lightBoxZoom": 2,
+    "maxHeight": "720px"
+  },
+  "desktop": {
+    "navigation": false,
+    "pagination": false,
+    "swipe": true,
+    "dark": true,
+    "magnify": false,
+    "thumbnails": {
+      "orientation": "bottom",
+      "multiRow": false,
+      "thumbnailsPerRow": 4,
+      "navigation": true
+    },
+    "lightBox": true,
+    "lightBoxZoom": 2,
+    "maxHeight": "720px"
+  }
+};
+}
+
+const variantImages = addedNode => {
+  try {
+    const productGalleryClassNames = ['product-single__photos', 'product-single__media-group'];
+    const rioClassName = 'rio-media-gallery';
+    const isContainer = productGalleryClassNames.find(x => addedNode.className.indexOf(x) > -1) && addedNode.className.indexOf(rioClassName) < 0;
+
+    if (isContainer && !__productWizRio.finishedInjection) {
+      const newAddedNode = addedNode.cloneNode(false);
+      newAddedNode.style.position = 'relative';
+      newAddedNode.style.paddingBottom = '15px';
+      const gallery = document.createElement('div');
+      gallery.className = 'rio-media-gallery';
+      newAddedNode.appendChild(gallery);
+      insertGalleryPlaceholder(newAddedNode, gallery);
+      addedNode.parentElement.replaceChild(newAddedNode, addedNode);
+      __productWizRio.finishedInjection = true;
+    }
+
+    const {
+      desktop,
+      mobile,
+      galaxio
+    } = __productWizRio.config;
+
+    if (typeof galaxio !== 'string') {
+      if (desktop && mobile) {
+        if (addedNode.className.indexOf('product-single--full-media') > -1) {
+          desktop.maxHeight = '1090px';
+          mobile.maxHeight = '1090px';
+        }
+
+        if (addedNode.className.indexOf('product-single--large-media') > -1) {
+          desktop.maxHeight = '720px';
+          mobile.maxHeight = '720px';
+        }
+
+        if (addedNode.className.indexOf('product-single--medium-media') > -1) {
+          desktop.maxHeight = '530px';
+          mobile.maxHeight = '530px';
+        }
+
+        if (addedNode.className.indexOf('product-single--small-media') > -1) {
+          desktop.maxHeight = '345px';
+          mobile.maxHeight = '345px';
+        }
+      }
+
+      if (typeof desktop.thumbnails === 'object' && desktop.thumbnails !== null && desktop.thumbnails.orientation === 'bottom') {
+        if (addedNode.className.indexOf('product-single--full-media') > -1) {
+          desktop.thumbnails.thumbnailsPerRow = 8;
+        }
+
+        if (addedNode.className.indexOf('product-single--large-media') > -1) {
+          desktop.thumbnails.thumbnailsPerRow = 5;
+        }
+
+        if (addedNode.className.indexOf('product-single--medium-media') > -1) {
+          desktop.thumbnails.thumbnailsPerRow = 4;
+        }
+
+        if (addedNode.className.indexOf('product-single--small-media') > -1) {
+          desktop.thumbnails.thumbnailsPerRow = 3;
+        }
+      }
+
+      if (typeof desktop.thumbnails === 'object' && desktop.thumbnails !== null && (desktop.thumbnails.orientation === 'left' || desktop.thumbnails.orientation === 'right')) {
+        if (addedNode.className.indexOf('product-single--full-media') > -1) {
+          desktop.thumbnails.container = 0.13;
+        }
+
+        if (addedNode.className.indexOf('product-single--large-media') > -1) {
+          desktop.thumbnails.container = 0.17;
+        }
+
+        if (addedNode.className.indexOf('product-single--medium-media') > -1) {
+          desktop.thumbnails.container = 0.20;
+        }
+
+        if (addedNode.className.indexOf('product-single--small-media') > -1) {
+          desktop.thumbnails.container = 0.25;
+        }
+      }
+    }
+  } catch (err) {}
+};
+
+const options = () => {
+  let addToCartFormElement = null;
+
+  __productWizRioOptions.onChange = currentOptions => {
+    if (!addToCartFormElement) {
+      debugLog('Could not find add to cart form element');
+    }
+
+    const productOptions = __productWizRioProduct.options;
+    const currentOptionsWithIndexes = currentOptions.map(currentOption => {
+      const optionIndex = productOptions.findIndex(x => x.name === currentOption.id);
+
+      if (optionIndex > -1) {
+        const option = productOptions[optionIndex];
+        const optionValueIndex = option.values.findIndex(x => currentOption.value === x);
+
+        if (optionValueIndex > -1) {
+          return { ...currentOption,
+            index: optionIndex,
+            valueIndex: optionValueIndex
+          };
+        }
+      }
+
+      debugLog('Could not find option index:');
+      debugLog(currentOption);
+      return null;
+    }).filter(x => x !== null);
+    const eventQueue = [];
+
+    for (const option of currentOptionsWithIndexes) {
+      const selectorStr = `select[id="SingleOptionSelector-${option.index}"]`;
+      const selector = addToCartFormElement.querySelector(selectorStr);
+
+      if (selector) {
+        selector.selectedIndex = option.valueIndex;
+        eventQueue.push(() => {
+          selector.dispatchEvent(new Event('change', {
+            bubbles: true
+          }));
+        });
+      } else {
+        debugLog(`Could not find query selector ${selectorStr}`);
+      }
+    }
+
+    eventQueue.forEach(item => {
+      item();
+    });
+  };
+
+  const hideElements = root => {
+    if (isPhantom()) {
+      return;
+    }
+
+    root.querySelectorAll('select[id*="SingleOptionSelector"]').forEach(elem => {
+      elem.parentNode.style.display = 'none';
+    });
+  };
+
+  const renderProductPage = mutation => {
+    Array.from(mutation.addedNodes).forEach(addedNode => {
+      const addToCartForm = descendantQuerySelector(addedNode, 'form[action$="/cart/add"]');
+
+      if (addToCartForm) {
+        injectRioOptionsDiv(addToCartForm, __productWizRioOptions, {}, () => {
+          const style = document.createElement('style');
+          style.textContent = `
+              .rio-product-option-title {
+                padding-left: 4px;
+              }
+              @media only screen and (max-width: 749px) {
+                .rio-product-option-title {
+                  font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+                  padding-left: 0px;
+                }
+              }
+            `;
+          document.head.appendChild(style);
+          setInitialVariant(addToCartForm);
+          addToCartFormElement = addToCartForm;
+        }, '.product-form__controls-group');
+        hideElements(addToCartForm);
+      }
+    });
+  };
+
+  const observer = startMutationObserver({
+    childList: true,
+    subtree: true
+  }, mutation => {
+    renderProductPage(mutation);
+  });
+  window.addEventListener('load', () => {
+    observer.disconnect();
+  });
+};
+    (() => {
+      const product = __productWizRioProduct;
+      const productMetafield = __productWizRioVariantImages;
+      const shopMetafield = __productWizRioShop;
+      const productGalleryMetafield = __productWizRioProductGallery;
+      __productWizRio.enabled = false;
+      if (product && Array.isArray(product.media) && product.media.length > 0) {
+        const hasVariantImages = productMetafield && productMetafield.enabled && !productMetafield.empty;
+        const variantImagesInit = (!shopMetafield || !shopMetafield.disabled) && hasVariantImages;
+        const productGalleryDisabledWithTag = Array.isArray(product.tags) && product.tags.includes('vw-disable-product-gallery');
+        const changeVariantOnVariantImageSelection = Array.isArray(product.tags) && product.tags.includes('vw-variant-vi-link');
+        const productGalleryInit = productGalleryMetafield && !productGalleryMetafield.disabled && !productGalleryDisabledWithTag;
+        if (variantImagesInit || productGalleryInit) {
+          __productWizRio.enabled = true;
+          __productWizRio.product = product;
+          if (changeVariantOnVariantImageSelection && 
+            __productWizRio.config && 
+            !__productWizRio.config.changeVariantOnVariantImageSelection) {
+              __productWizRio.config.changeVariantOnVariantImageSelection = true;
+          }
+          if (variantImagesInit) {
+            __productWizRio.productRio = productMetafield.mapping;
+            __productWizRio.imageFilenames = productMetafield.imageFilenames;
+            __productWizRio.mediaSettings = productMetafield.mediaSettings;
+          }
+        }
+      }
+      if (__productWizRio.enabled) {
+        
+        const callback = (mutation) => {
+          Array.from(mutation.addedNodes).forEach((addedNode) => {
+            if (typeof addedNode.className === 'string') {
+              variantImages(addedNode);
+            }
+          });
+        };
+        const observer = startMutationObserver(
+          { childList: true, subtree: true },
+          (mutation) => callback(mutation)
+        );
+        window.addEventListener('load', () => {
+          observer.disconnect();
+        });
+        
+        
+      }
+    })();
+    
+    (() => {
+      const product = __productWizRioProduct;
+      const productMetafield = __productWizRioProductOptions;
+      const shopMetafield = __productWizRioProductOptionsShop;
+      __productWizRioOptions.enabled = false;
+      const productOptionsEnabled = !shopMetafield || !shopMetafield.disabled;
+      if (productOptionsEnabled) {
+        const hasVariants = product && !__productWizRioHasOnlyDefaultVariant;
+        const productOptionEnabled = productMetafield && productMetafield.enabled;
+        if (hasVariants && productOptionEnabled) {
+          __productWizRioOptions.enabled = true;
+          __productWizRioOptions.product = product;
+          __productWizRioOptions.options = productMetafield.options;
+          __productWizRioOptions.settings = productMetafield.settings;
+        }
+      }
+      let hook = false;
+      if (__productWizRioOptions.enabled) {
+        hook = true;
+        options();
+      } else {
+        if (__productWizRio?.config?.changeVariantOnVariantImageSelection) {
+          __productWizRioOptions.phantom = true;
+          __productWizRioOptions.queueRender = () => {};
+          hook = true;
+          options();
+        }
+      }
+      if (hook) {
+        __productWizRioOptions.change = async (variant) => {
+          if (__productWizRioOptions.enabled && __productWizRioOptions.cbs) {
+            for (const option of variant.options) {
+              const fn = __productWizRioOptions.cbs[option.id];
+              if (typeof fn === 'function') {
+                fn(option.value);
+              }
+              await delayMs(50);
+            }
+          } else if (typeof __productWizRioOptions.onChange === 'function') {
+            __productWizRioOptions.onChange(variant.options, variant);
+          }
+        };
+      }
+    })()
+    
+  })();
+</script>
+<link rel="stylesheet" href="{{ 'productwiz-rio.min.css' | asset_url }}">
+<script async src="{{ 'productwiz-rio.min.js' | asset_url }}"></script>
+{% endif %}

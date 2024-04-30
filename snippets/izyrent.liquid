@@ -1,0 +1,90 @@
+<script>
+var izyrent_shopify_js = `{{ 'api.jquery.js' | shopify_asset_url }}`;
+var izyrent_current_page = `{{request.page_type}}`;
+var izyrent_currency_format = '{{shop.money_format | replace: "'", '"'}}';
+var izyrent_settings = `{{shop.metafields.izyrent.settings}}`;
+var izyrent_cart_ids = [];
+{% if product.id %}
+var izyrent_product_meta = {product : {id : {{product.id}} , variants : [{%- for variant in product.variants -%}
+                            {id : {{variant.id}}, "price" :{{variant.price}}},
+                              {%- endfor -%}]}}; 
+
+{% endif %}
+</script>
+
+
+<script>
+{%- for item in cart.items -%}
+{% if item.product.metafields.izyrent.izyrent or item.product.tags contains "deposit" %}
+{% capture variant %}{{item.variant_id}}{% endcapture %}
+  {% unless item.product.metafields.izyrent.izyrent.value.variantStock[variant].disabledCalendar %}
+   izyrent_cart_ids.push({"key" : "{{item.key}}", "quantity" :"{{item.quantity}}" ,"line" : "{{ forloop.index }}","tags" : "{{ item.product.tags }}" });
+     {% endunless %}
+    {% endif %}
+{%- endfor -%}
+
+</script>
+
+<style>
+
+.mw-apo-configure-link{ display:none !important;}
+
+.izyloader {
+  display: flex;
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  border: 10px solid;
+  border-color: rgb(0 0 0 / 15%) rgb(0 0 0 / 25%) rgb(0 0 0 / 35%) rgb(0 0 0 / 50%);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+</style>
+{% if product.metafields.izyrent.izyrent %}
+
+<style>
+form[action*='cart/add']{
+  visibility :hidden;
+  }
+  
+.product-form__quantity{
+    display:none;
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+
+const target = document.querySelector("form[action*='cart/add']");
+
+
+const izyloader = document.createElement('div');
+izyloader.innerHTML = '<span class="izyloader"></span>';
+
+  
+target.parentNode.insertBefore(izyloader, target);
+});
+  var izyrent_metafields = `{{product.metafields.izyrent.izyrent}}`;
+  izyrent_current_page = `product`;
+
+
+
+ 
+
+</script>
+
+{% endif %}
+
+
+<script src="https://izyrent.speaz.com/core.js" async ></script>

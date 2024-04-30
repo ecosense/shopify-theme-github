@@ -1,0 +1,22 @@
+{% if request.page_type == 'product' %}
+{%- unless avada_seo_ovr_product_ids contains product.id -%}
+{%- capture avada_seo_meta_title -%}{{ product.title }}{%- endcapture -%}
+{%- capture avada_seo_meta_description -%}Buy {{ product.title }} from ecosense.io. ✓ Fast and Accurate radon detectors ✓ Radon Monitoring Anytime, Anywhere ✓ Free Shipping{%- endcapture -%}
+{% endunless %}
+{% endif %}
+
+{% if request.page_type == 'article' %}
+{%- capture avada_seo_meta_title -%}{{ article.title }}{%- endcapture -%}
+{%- capture avada_seo_meta_description -%}{{ article.excerpt_or_content }}{%- endcapture -%}
+{% endif %}
+
+{% if avada_seo_meta_title %}
+{%- assign seo_title = avada_seo_meta_title | strip_html | strip -%}
+{%- assign page_title = seo_title -%}
+{%- assign og_title = seo_title -%}
+{% endif %}
+
+{% if avada_seo_meta_description %}
+{%- assign page_description = avada_seo_meta_description | strip_html | strip -%}
+{%- assign og_description = page_description -%}
+{% endif %}

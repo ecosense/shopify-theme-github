@@ -1,0 +1,234 @@
+
+{% if section.settings.section_id.size > 0 %}
+  <!-- PageFlyGlobalSection -->
+  {% render 'pagefly-main-js' %}
+  {% render 'pagefly-main-css' %}
+  {% include section.settings.section_id %}
+{% else %}
+  
+    {% if request.design_mode %}
+      <style>.pf-ph{font-size:14px!important;background:#fafafa;padding:20px;text-align:center;border:1px solid #f0f0f0;border-radius:4px;margin:15px}.pf-ph span{display:block;background:#e6f7ff;padding:8px 15px;border:1px solid #91d5ff}</style>
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+{% endif %}
+
+{% schema %}
+{
+  "name": "PageFly Section",
+  "settings": [
+    {
+      "id": "section_id",
+      "type": "select",
+      "label": "Sections",
+      "options": [
+        {
+          "label": "Select section",
+          "value": ""
+        },
+        {
+          "label": "Section - metrics on about us ",
+          "value": "pf-ba288bae"
+        },
+        {
+          "label": "EcoQube hero ",
+          "value": "pf-755dd2b9"
+        },
+        {
+          "label": "Section - credibility badges",
+          "value": "pf-4275cdb4"
+        },
+        {
+          "label": "David's Calendly button",
+          "value": "pf-288cee97"
+        },
+        {
+          "label": "Video: Why Long-Term Radon Monitoring Is Important",
+          "value": "pf-9fba034e"
+        },
+        {
+          "label": "Section - RadonEye Pro Header Image",
+          "value": "pf-709519a9"
+        },
+        {
+          "label": "Section - comparison checklist",
+          "value": "pf-bf7f4ba4"
+        },
+        {
+          "label": "BFD-HERO",
+          "value": "pf-4d28f19b"
+        },
+        {
+          "label": "Section - CNRPP (TEST RESULT)",
+          "value": "pf-7929d94f"
+        },
+        {
+          "label": "Section - collection (professional)",
+          "value": "pf-5c12b441"
+        },
+        {
+          "label": "Booth materials ",
+          "value": "pf-d700e241"
+        },
+        {
+          "label": "Section - Home solutions collection for referral p",
+          "value": "pf-8e392008"
+        },
+        {
+          "label": "Section - EcoBlu for referral pages",
+          "value": "pf-b2339e31"
+        },
+        {
+          "label": "Section - EcoQube for referral pages",
+          "value": "pf-53fdbb94"
+        },
+        {
+          "label": "Section - RadonEye for referral pages",
+          "value": "pf-81961c0e"
+        },
+        {
+          "label": "Ecosense Products 5 features ",
+          "value": "pf-b0131531"
+        },
+        {
+          "label": "About Radon Article Section",
+          "value": "pf-5a2bb69c"
+        },
+        {
+          "label": "Section - consumer product list (home)",
+          "value": "pf-4b1a1551"
+        },
+        {
+          "label": "RadonEye for referral pages Section",
+          "value": "pf-94ac041d"
+        },
+        {
+          "label": "EcoQube for referral pages Section",
+          "value": "pf-61607fe2"
+        },
+        {
+          "label": "EcoBlu for referral pages Section",
+          "value": "pf-5e72a603"
+        },
+        {
+          "label": "Product Features Section",
+          "value": "pf-d96d38b0"
+        },
+        {
+          "label": "Referreal Club Handout Download",
+          "value": "pf-7336e415"
+        },
+        {
+          "label": "Section - product overview",
+          "value": "pf-8c90c0c7"
+        },
+        {
+          "label": "Section - sensitivity",
+          "value": "pf-b967ee24"
+        },
+        {
+          "label": "Section - consumer collections",
+          "value": "pf-2c521293"
+        },
+        {
+          "label": "Section - Ecosense benefits",
+          "value": "pf-28135410"
+        },
+        {
+          "label": "EcoTracker Review Video",
+          "value": "pf-48029c38"
+        },
+        {
+          "label": "Home - Ecosense news",
+          "value": "pf-ee1b9bfb"
+        },
+        {
+          "label": "Section - blog",
+          "value": "pf-5e31019e"
+        },
+        {
+          "label": "Section - Partners",
+          "value": "pf-696073fc"
+        },
+        {
+          "label": "Section - product shop",
+          "value": "pf-dc8eee0d"
+        },
+        {
+          "label": "Section - referral related videos",
+          "value": "pf-28f32bb8"
+        },
+        {
+          "label": "Section - referral info hero - text",
+          "value": "pf-df2027c0"
+        },
+        {
+          "label": "Section - referral info hero",
+          "value": "pf-ec7273f7"
+        },
+        {
+          "label": "Section - referral key product",
+          "value": "pf-ff7d0e8b"
+        },
+        {
+          "label": "Section - referral benefits",
+          "value": "pf-f33679ba"
+        },
+        {
+          "label": "Section - referral hero",
+          "value": "pf-a92ccbc6"
+        },
+        {
+          "label": "Section - referral-product",
+          "value": "pf-9e56a62a"
+        },
+        {
+          "label": "Section - article in page",
+          "value": "pf-87e78786"
+        },
+        {
+          "label": "Section - calendary",
+          "value": "pf-6756c15f"
+        },
+        {
+          "label": "Section - promo table",
+          "value": "pf-830a4e23"
+        },
+        {
+          "label": "Section - memorial promo-2022",
+          "value": "pf-0120fad1"
+        },
+        {
+          "label": "Section - memorial promo-2022-mobile",
+          "value": "pf-6865727c"
+        },
+        {
+          "label": "Section - calendly",
+          "value": "pf-392d3cfa"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Find and edit your section on the [section listing](https://ecosense-store.myshopify.com/admin/apps/pagefly/sections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "To add block to a section, please use the App Block element on PageFly section editor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PageFly Section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+<div id="related_products_app_html"></div>
+{% assign related_rp_items = product.metafields.related_items %}
+<noscript id="rp_app_items">
+  {{ related_rp_items | json }}
+</noscript>
+{%- capture addonsList -%}
+  {
+    {%- for item in related_rp_items -%}
+      {% if item[1] %}
+        {% assign handle = item[1].product_handle %}
+        {% assign addons = all_products[handle].metafields.mrp-product-addons.default %}
+        {% if addons != blank %}
+          ...{ {{all_products[handle].id}}: {{- addons | json -}} }
+          {% unless forloop.last == true %},{% endunless %}
+        {% endif %}
+      {% endif %}
+    {%- endfor -%}
+  }
+{%- endcapture -%}
+
+<script type="text/javascript">
+  try {
+    var mrpProductsAddonsList = {{addonsList | strip_newlines }}
+    var mrpCustomization = {{ shop.metafields.mrp-customization | json }}
+    var mrpSettings = {{ shop.metafields.mrp-settings.default | json }}
+  } catch(e) {
+    console.error(e + '')
+  }
+</script>
