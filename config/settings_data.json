@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "color_text": "#000000",
@@ -42,7 +51,7 @@
         "type": "header",
         "settings": {
           "align_logo": "left",
-          "logo": "shopify:\/\/shop_images\/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_89ed9938-7c69-4676-a8a6-0b2e3335bbc4.png",
+          "logo": "shopify:\/\/shop_images\/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_fc689c06-5a66-40ee-bae8-c07412d0de67.png",
           "logo_max_width": 180,
           "main_linklist": "main-menu",
           "message": false,
@@ -163,18 +172,18 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "22601fef-1a16-4e26-b944-bc60e94f29c6": {
+            "type": "link_list",
+            "settings": {
+              "title": "Shop",
+              "menu": "shop"
+            }
+          },
           "7a66e824-71c5-4fe0-b4ea-eb6159d10d6f": {
             "type": "link_list",
             "settings": {
-              "title": "Company",
+              "title": "Explore",
               "menu": "footer"
-            }
-          },
-          "5884c117-416e-4c22-9bc9-68fcf56b3cb7": {
-            "type": "link_list",
-            "settings": {
-              "title": "Legal",
-              "menu": "legal"
             }
           },
           "91f08f60-07b1-46e7-894f-a1bea8849abe": {
@@ -184,19 +193,19 @@
               "menu": "about"
             }
           },
-          "22601fef-1a16-4e26-b944-bc60e94f29c6": {
+          "5884c117-416e-4c22-9bc9-68fcf56b3cb7": {
             "type": "link_list",
             "settings": {
-              "title": "Community portal",
-              "menu": "community-portal"
+              "title": "Legal",
+              "menu": "legal"
             }
           }
         },
         "block_order": [
+          "22601fef-1a16-4e26-b944-bc60e94f29c6",
           "7a66e824-71c5-4fe0-b4ea-eb6159d10d6f",
-          "5884c117-416e-4c22-9bc9-68fcf56b3cb7",
           "91f08f60-07b1-46e7-894f-a1bea8849abe",
-          "22601fef-1a16-4e26-b944-bc60e94f29c6"
+          "5884c117-416e-4c22-9bc9-68fcf56b3cb7"
         ],
         "settings": {
           "show_payment_icons": false,
