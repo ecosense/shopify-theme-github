@@ -209,10 +209,10 @@
         ],
         "settings": {
           "show_payment_icons": false,
-          "color_footer_bg": "#fafafa",
+          "color_footer_bg": "#fcfcfc",
           "color_footer_text": "#000000",
           "show_locale_selector": false,
-          "show_currency_selector": false
+          "show_currency_selector": true
         }
       },
       "collection-template": {
