@@ -265,6 +265,8 @@
   #Normalize
   Based on normalize.css v3.0.2 | MIT License | git.io/normalize
 ==============================================================================*/
+.site-header__logo img { min-width: 77px; }
+
 article,
 aside,
 details,
