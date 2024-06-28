@@ -344,7 +344,7 @@
       },
       "12645029315662244871": {
         "type": "shopify:\/\/apps\/meteor-mega-menu\/blocks\/app_embed\/9412d6a7-f8f8-4d65-b9ae-2737c2f0f45b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "navigation_link_caret_style": "outline",
           "navigation_link_spacing": 16,
