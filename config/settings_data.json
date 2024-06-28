@@ -344,7 +344,7 @@
       },
       "12645029315662244871": {
         "type": "shopify:\/\/apps\/meteor-mega-menu\/blocks\/app_embed\/9412d6a7-f8f8-4d65-b9ae-2737c2f0f45b",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "navigation_link_caret_style": "outline",
           "navigation_link_spacing": 16,
@@ -353,14 +353,14 @@
           "menu_font_size": 16,
           "menu_font_weight": "400",
           "menu_text_transform": "uppercase",
-          "menu_center_in_viewport": false,
-          "menu_vertical_offset": 10,
-          "menu_display_action": "hover",
+          "menu_center_in_viewport": true,
+          "menu_vertical_offset": 16,
+          "menu_display_action": "click",
           "menu_display_delay": "0",
           "menu_display_animation": "none",
           "disable_desktop": false,
           "mobile_breakpoint": 0,
-          "disable_mobile": false,
+          "disable_mobile": true,
           "desktop_nav_selector": "",
           "mobile_nav_selector": "",
           "addons_enabled": false
