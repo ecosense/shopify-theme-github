@@ -52,7 +52,7 @@
         "settings": {
           "align_logo": "left",
           "logo": "shopify:\/\/shop_images\/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_fc689c06-5a66-40ee-bae8-c07412d0de67.png",
-          "logo_max_width": 180,
+          "logo_max_width": 250,
           "main_linklist": "main-menu",
           "message": false,
           "home_page_only": false,
