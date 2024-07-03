@@ -1,0 +1,32 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "collabs": {
+      "type": "apps",
+      "blocks": {
+        "4ee219f0-4fd5-42e5-ab79-053f7f347e2f": {
+          "type": "shopify:\/\/apps\/collabs\/blocks\/application-page\/54758706-9f25-4fa9-a553-64720a4c998b",
+          "settings": {
+            "heading": "Join the Ecosense community"
+          }
+        }
+      },
+      "block_order": [
+        "4ee219f0-4fd5-42e5-ab79-053f7f347e2f"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "collabs"
+  ]
+}
