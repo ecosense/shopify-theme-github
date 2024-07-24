@@ -374,6 +374,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "43034bfa-b90a-4a14-aaa8-527eac735f6f": {
+        "type": "shopify:\/\/apps\/dialogue-cro-a-b-testing\/blocks\/dialogueai-embed\/43034bfa-b90a-4a14-aaa8-527eac735f6f",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   },
