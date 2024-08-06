@@ -7026,6 +7026,6 @@ max-width: 90% !important;
 .site-nav.geoip-loading {
   visibility: hidden;
 }
-.section-header {
-    padding-top: 100px;
-  }
+.shopify-policy__title {
+    padding-top:50px;
+}
