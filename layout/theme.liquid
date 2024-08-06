@@ -210,7 +210,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         scripts.parentNode.insertBefore(polyfill, scripts);
       }
     </script>
-
+<script>
+document.addEventListener("shopify:section:load", function(event) {
+if(event.detail.sectionId === '{{section.id}}') {
+loadFeed();
+}
+});
+</script>
    
 {{ content_for_header }}
 
