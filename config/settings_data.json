@@ -31,11 +31,11 @@
     "share_facebook": false,
     "share_twitter": false,
     "share_pinterest": false,
-    "social_twitter_link": "https:\/\/twitter.com\/ecosenseinc",
-    "social_facebook_link": "https:\/\/www.facebook.com\/ecosense.io",
-    "social_instagram_link": "https:\/\/www.instagram.com\/ecosense.inc\/",
-    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCpSJ5DXHqBoZW5sXi3MvScQ\/featured?view_as=subscriber",
-    "favicon": "shopify:\/\/shop_images\/Ecosense-BI_Symbolmark_Symbolmark_Positive_Color_ed4cab3d-fe68-4383-b419-737b9cc4ff9f.png",
+    "social_twitter_link": "https://twitter.com/ecosenseinc",
+    "social_facebook_link": "https://www.facebook.com/ecosense.io",
+    "social_instagram_link": "https://www.instagram.com/ecosense.inc/",
+    "social_youtube_link": "https://www.youtube.com/channel/UCpSJ5DXHqBoZW5sXi3MvScQ/featured?view_as=subscriber",
+    "favicon": "shopify://shop_images/Ecosense-BI_Symbolmark_Symbolmark_Positive_Color_ed4cab3d-fe68-4383-b419-737b9cc4ff9f.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
     "checkout_body_background_color": "#ffffff",
@@ -54,12 +54,12 @@
         ],
         "settings": {
           "align_logo": "left",
-          "logo": "shopify:\/\/shop_images\/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_0006ff9e-1d7e-425b-8e81-e324fc4770a9.png",
+          "logo": "shopify://shop_images/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_0006ff9e-1d7e-425b-8e81-e324fc4770a9.png",
           "logo_max_width": 250,
           "main_linklist": "main-menu",
           "message": false,
           "home_page_only": false,
-          "message_text": "4TH OF JULY SALE | 10% OFF SITEWIDE WITH PROMO CODE: 4DAYS | Ends 7\/5",
+          "message_text": "4TH OF JULY SALE | 10% OFF SITEWIDE WITH PROMO CODE: 4DAYS | Ends 7/5",
           "message_link": "",
           "color_bg": "#c00d0d",
           "color_text": "#ffffff"
@@ -298,37 +298,37 @@
     ],
     "blocks": {
       "815433678263611098045": {
-        "type": "shopify:\/\/apps\/izyrent-rentals-bookings\/blocks\/izyrent\/cda4a37a-6d4d-4f3d-b8e5-c19d5c367c6a",
+        "type": "shopify://apps/izyrent-rentals-bookings/blocks/izyrent/cda4a37a-6d4d-4f3d-b8e5-c19d5c367c6a",
         "disabled": false,
         "settings": {
         }
       },
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {
         }
       },
       "6987625696575125306": {
-        "type": "shopify:\/\/apps\/weglot-translate-your-store\/blocks\/weglot\/3097482a-fafe-42ff-bc33-ea19e35c4a20",
+        "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
         "disabled": false,
         "settings": {
         }
       },
       "16278478101612877664": {
-        "type": "shopify:\/\/apps\/pagefly-landing-page-builder\/blocks\/app-embed\/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "type": "shopify://apps/pagefly-landing-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
         "disabled": false,
         "settings": {
         }
       },
       "1990815452989453926": {
-        "type": "shopify:\/\/apps\/ryviu-reviews-qa\/blocks\/ryviu-js\/807ad6ed-1a6a-4559-abea-ed062858d9da",
+        "type": "shopify://apps/ryviu-reviews-qa/blocks/ryviu-js/807ad6ed-1a6a-4559-abea-ed062858d9da",
         "disabled": false,
         "settings": {
         }
       },
       "15683396631634586217": {
-        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": true,
         "settings": {
           "button_color": "#060830",
@@ -340,7 +340,7 @@
         }
       },
       "12645029315662244871": {
-        "type": "shopify:\/\/apps\/meteor-mega-menu\/blocks\/app_embed\/9412d6a7-f8f8-4d65-b9ae-2737c2f0f45b",
+        "type": "shopify://apps/meteor-mega-menu/blocks/app_embed/9412d6a7-f8f8-4d65-b9ae-2737c2f0f45b",
         "disabled": false,
         "settings": {
           "navigation_link_caret_style": "outline",
@@ -364,27 +364,47 @@
         }
       },
       "5366966397018820931": {
-        "type": "shopify:\/\/apps\/instant-a-b-testing\/blocks\/tracking\/63aa07b1-7397-484f-b6dd-f47e11b50223",
+        "type": "shopify://apps/instant-a-b-testing/blocks/tracking/63aa07b1-7397-484f-b6dd-f47e11b50223",
         "disabled": false,
         "settings": {
         }
       },
       "43034bfa-b90a-4a14-aaa8-527eac735f6f": {
-        "type": "shopify:\/\/apps\/dialogue-cro-a-b-testing\/blocks\/dialogueai-embed\/43034bfa-b90a-4a14-aaa8-527eac735f6f",
+        "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueai-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
         "disabled": false,
         "settings": {
         }
       },
       "1363818962309316749": {
-        "type": "shopify:\/\/apps\/dialogue-cro-a-b-testing\/blocks\/dialogueab-embed\/43034bfa-b90a-4a14-aaa8-527eac735f6f",
+        "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueab-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
         "disabled": true,
         "settings": {
         }
       },
       "18128612654622612671": {
-        "type": "shopify:\/\/apps\/selectors\/blocks\/app-embed\/a005a4a7-4aa2-4155-9c2b-0ab41acbf99c",
+        "type": "shopify://apps/selectors/blocks/app-embed/a005a4a7-4aa2-4155-9c2b-0ab41acbf99c",
         "disabled": false,
         "settings": {
+        }
+      },
+      "14974507362743789004": {
+        "type": "shopify://apps/magical-form-fields/blocks/magical-custom-fields/626d3eec-22be-4e6e-af63-f28f8a4eec26",
+        "disabled": false,
+        "settings": {
+          "cart_line_item_component_price": true,
+          "display_group_name": false,
+          "font": "sans-serif",
+          "surface_color": "#ffffff",
+          "text_color": "#222223",
+          "text_subdued_color": "#6d7175",
+          "border_color": "#aeb4b9",
+          "border_top_color": "#898f94",
+          "surface_critical_subdued_color": "#fff4f4",
+          "text_critical_color": "#d72c0d",
+          "border_critical_color": "#fd5749",
+          "border_radius": 4,
+          "text_align": "left",
+          "custom_css": ""
         }
       }
     }
