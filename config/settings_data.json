@@ -387,9 +387,15 @@
         "settings": {
         }
       },
+      "6334702640933891749": {
+        "type": "shopify://apps/textbox-by-textify/blocks/app-embed/b5626f69-87af-4a23-ada4-1674452f85d0",
+        "disabled": false,
+        "settings": {
+        }
+      },
       "14974507362743789004": {
         "type": "shopify://apps/magical-form-fields/blocks/magical-custom-fields/626d3eec-22be-4e6e-af63-f28f8a4eec26",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "cart_line_item_component_price": true,
           "display_group_name": false,
