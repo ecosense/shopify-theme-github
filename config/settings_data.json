@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_text": "#000000",
@@ -49,9 +49,7 @@
     "sections": {
       "header": {
         "type": "header",
-        "custom_css": [
-
-        ],
+        "custom_css": [],
         "settings": {
           "align_logo": "left",
           "logo": "shopify://shop_images/Ecosense-BI_Symbolmark_Brandmark_Signature_HORIZ_Positive_Color_0006ff9e-1d7e-425b-8e81-e324fc4770a9.png",
@@ -74,26 +72,22 @@
       },
       "feature-row": {
         "type": "feature-row",
-        "settings": {
-        }
+        "settings": {}
       },
       "feature-columns": {
         "type": "feature-columns",
         "blocks": {
           "feature-columns-0": {
             "type": "text_block",
-            "settings": {
-            }
+            "settings": {}
           },
           "feature-columns-1": {
             "type": "text_block",
-            "settings": {
-            }
+            "settings": {}
           },
           "feature-columns-2": {
             "type": "text_block",
-            "settings": {
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -122,18 +116,15 @@
         "blocks": {
           "quotes-0": {
             "type": "quote",
-            "settings": {
-            }
+            "settings": {}
           },
           "quotes-1": {
             "type": "quote",
-            "settings": {
-            }
+            "settings": {}
           },
           "quotes-2": {
             "type": "quote",
-            "settings": {
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -150,18 +141,15 @@
         "blocks": {
           "image-bar-0": {
             "type": "image",
-            "settings": {
-            }
+            "settings": {}
           },
           "image-bar-1": {
             "type": "image",
-            "settings": {
-            }
+            "settings": {}
           },
           "image-bar-2": {
             "type": "image",
-            "settings": {
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -169,8 +157,7 @@
           "image-bar-1",
           "image-bar-2"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "footer": {
         "type": "footer",
@@ -275,8 +262,7 @@
       },
       "pagefly-home": {
         "type": "pagefly-home",
-        "settings": {
-        }
+        "settings": {}
       },
       "list-collections-template": {
         "type": "list-collections-template",
@@ -300,32 +286,27 @@
       "815433678263611098045": {
         "type": "shopify://apps/izyrent-rentals-bookings/blocks/izyrent/cda4a37a-6d4d-4f3d-b8e5-c19d5c367c6a",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "855628211100114053": {
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6987625696575125306": {
         "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "16278478101612877664": {
         "type": "shopify://apps/pagefly-landing-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "1990815452989453926": {
         "type": "shopify://apps/ryviu-reviews-qa/blocks/ryviu-js/807ad6ed-1a6a-4559-abea-ed062858d9da",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
@@ -366,32 +347,27 @@
       "5366966397018820931": {
         "type": "shopify://apps/instant-a-b-testing/blocks/tracking/63aa07b1-7397-484f-b6dd-f47e11b50223",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "43034bfa-b90a-4a14-aaa8-527eac735f6f": {
         "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueai-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "1363818962309316749": {
         "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueab-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "18128612654622612671": {
         "type": "shopify://apps/selectors/blocks/app-embed/a005a4a7-4aa2-4155-9c2b-0ab41acbf99c",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6334702640933891749": {
         "type": "shopify://apps/textbox-by-textify/blocks/app-embed/b5626f69-87af-4a23-ada4-1674452f85d0",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "14974507362743789004": {
         "type": "shopify://apps/magical-form-fields/blocks/magical-custom-fields/626d3eec-22be-4e6e-af63-f28f8a4eec26",
@@ -412,6 +388,11 @@
           "text_align": "left",
           "custom_css": ""
         }
+      },
+      "17327048248777170309": {
+        "type": "shopify://apps/dr-stacked-discounts/blocks/instant-load/f428e1ae-8a34-4767-8189-f8339f3ab12b",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
@@ -420,8 +401,7 @@
       "sections": {
         "header": {
           "type": "header",
-          "settings": {
-          }
+          "settings": {}
         },
         "hero-1": {
           "type": "hero",
@@ -432,26 +412,22 @@
         },
         "feature-row": {
           "type": "feature-row",
-          "settings": {
-          }
+          "settings": {}
         },
         "feature-columns": {
           "type": "feature-columns",
           "blocks": {
             "feature-columns-0": {
               "type": "text_block",
-              "settings": {
-              }
+              "settings": {}
             },
             "feature-columns-1": {
               "type": "text_block",
-              "settings": {
-              }
+              "settings": {}
             },
             "feature-columns-2": {
               "type": "text_block",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -480,18 +456,15 @@
           "blocks": {
             "quotes-0": {
               "type": "quote",
-              "settings": {
-              }
+              "settings": {}
             },
             "quotes-1": {
               "type": "quote",
-              "settings": {
-              }
+              "settings": {}
             },
             "quotes-2": {
               "type": "quote",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -508,18 +481,15 @@
           "blocks": {
             "image-bar-0": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             },
             "image-bar-1": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             },
             "image-bar-2": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -527,21 +497,18 @@
             "image-bar-1",
             "image-bar-2"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "footer": {
           "type": "footer",
           "blocks": {
             "footer-0": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "footer-1": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -692,23 +659,20 @@
         },
         "1492033809691": {
           "type": "map",
-          "settings": {
-          }
+          "settings": {}
         },
         "1492033877875": {
           "type": "quotes",
           "blocks": {
             "1492033877875-0": {
               "type": "quote",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
             "1492033877875-0"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "1492033924902": {
           "type": "custom-content",
@@ -734,18 +698,15 @@
           "blocks": {
             "1492096252560-0": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             },
             "1492096252560-1": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             },
             "1492096252560-2": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -784,18 +745,15 @@
           "blocks": {
             "link_list": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
