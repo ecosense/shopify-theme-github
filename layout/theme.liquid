@@ -224,7 +224,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
   {% render "geo" %}
 
-{% include 'pagefly-app-header' %}
+
 <!-- Start of Clarity scripts -->
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -235,7 +235,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
     <!-- End of Clarity scripts -->
 
-</head>
+{% include 'pagefly-app-header' %}</head>
 
   <body class="template-{{ request.page_type | handle }}">
     <!-- Google Tag Manager (noscript) -->
