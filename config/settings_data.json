@@ -356,7 +356,7 @@
       },
       "1363818962309316749": {
         "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueab-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       },
       "18128612654622612671": {
