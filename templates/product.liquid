@@ -24,7 +24,7 @@
     unavailable: {{ 'products.product.unavailable' | t | json }}
   }
 </script>
-
+  <!-- FAQ Schema Start -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -139,7 +139,8 @@
   ]
 }
   </script>
-
+  <!-- FAQ Schema End -->
+  
 {% assign current_variant = product.selected_or_first_available_variant %}
 
 {%- capture avada_seo_product -%}
