@@ -1,7 +1,10 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type":"Product",
+  "@type": "WebPage",
+  "mainEntity": [
+    {
+   "@type":"Product",
   "name": {{ product.title | json }}, 
 {% assign ryviu = product.metafields.ryviu %}
 {% if ryviu %}
@@ -16,9 +19,6 @@
      },
       {%- endif -%}
 {% endif %}  
-  "@type": "WebPage",
-  "mainEntity": [
-    {
       "@type": "Article",
       "headline": "Radon and Lung Cancer: Understanding the Risks and Protection Methods in Colorado",
       "author": {
