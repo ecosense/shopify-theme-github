@@ -231,7 +231,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
     <!-- End of Clarity scripts -->
 
-{% include 'pagefly-app-header' %}</head>
+{% include 'pagefly-app-header' %}
+
+{% if template == 'product' %}
+  {% render 'product-schema' %}
+{% endif %}
+
+  </head>
 
   <body class="template-{{ request.page_type | handle }}">
     <!-- Google Tag Manager (noscript) -->
