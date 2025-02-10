@@ -235,20 +235,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 {% if product %}
   {% render 'product-schema' %}
-  "name": {{ product.title | json }}, 
-  {% assign ryviu = product.metafields.ryviu %}
-{% if ryviu %}
-{%- assign aggregateRating = ryviu.product_reviews_info | split: ";" -%}
-  {%- assign r_avg = aggregateRating[1] | plus: 0 -%}
-  {%- assign r_count = aggregateRating[0] | plus: 0 -%}
-  {%- if r_count > 0 -%}   
-    "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "{{ r_avg }}",
-            "reviewCount": "{{ r_count }}"
-     },
-      {%- endif -%}
-{% endif %}  
 {% endif %}
 
   </head>
