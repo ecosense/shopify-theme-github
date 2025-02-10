@@ -4,21 +4,6 @@
   "@type": "WebPage",
   "mainEntity": [
     {
-   "@type":"Product",
-  "name": {{ product.title | json }}, 
-{% assign ryviu = product.metafields.ryviu %}
-{% if ryviu %}
-{%- assign aggregateRating = ryviu.product_reviews_info | split: ";" -%}
-  {%- assign r_avg = aggregateRating[1] | plus: 0 -%}
-  {%- assign r_count = aggregateRating[0] | plus: 0 -%}
-  {%- if r_count > 0 -%}   
-    "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "{{ r_avg }}",
-            "reviewCount": "{{ r_count }}"
-     },
-      {%- endif -%}
-{% endif %}  
       "@type": "Article",
       "headline": "Radon and Lung Cancer: Understanding the Risks and Protection Methods in Colorado",
       "author": {
