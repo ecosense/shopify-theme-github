@@ -308,18 +308,6 @@
         "disabled": false,
         "settings": {}
       },
-      "15683396631634586217": {
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": true,
-        "settings": {
-          "button_color": "#060830",
-          "button_icon": "chat_bubble",
-          "button_text": "no_text",
-          "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
-          "greeting_message": "👋 Hi, message us with any questions. We're happy to help!"
-        }
-      },
       "12645029315662244871": {
         "type": "shopify://apps/meteor-mega-menu/blocks/app_embed/9412d6a7-f8f8-4d65-b9ae-2737c2f0f45b",
         "disabled": false,
@@ -343,21 +331,6 @@
           "mobile_nav_selector": "",
           "addons_enabled": false
         }
-      },
-      "5366966397018820931": {
-        "type": "shopify://apps/instant-a-b-testing/blocks/tracking/63aa07b1-7397-484f-b6dd-f47e11b50223",
-        "disabled": false,
-        "settings": {}
-      },
-      "43034bfa-b90a-4a14-aaa8-527eac735f6f": {
-        "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueai-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
-        "disabled": false,
-        "settings": {}
-      },
-      "1363818962309316749": {
-        "type": "shopify://apps/dialogue-cro-a-b-testing/blocks/dialogueab-embed/43034bfa-b90a-4a14-aaa8-527eac735f6f",
-        "disabled": false,
-        "settings": {}
       },
       "18128612654622612671": {
         "type": "shopify://apps/selectors/blocks/app-embed/a005a4a7-4aa2-4155-9c2b-0ab41acbf99c",
@@ -389,8 +362,50 @@
           "custom_css": ""
         }
       },
-      "17327048248777170309": {
-        "type": "shopify://apps/dr-stacked-discounts/blocks/instant-load/f428e1ae-8a34-4767-8189-f8339f3ab12b",
+      "16477348613150133823": {
+        "type": "shopify://apps/unlimited-bundles/blocks/script-app-block/d33d0f48-dee0-42a0-b156-2a5dce91814a",
+        "disabled": false,
+        "settings": {
+          "reload_on_line_item_properties": false,
+          "disable_reload_on_cart_update": false,
+          "disable_cart_attribute_tracker": false,
+          "disable_facebook_events": false,
+          "enable_reload_on_bundle_auto_match": false,
+          "use_h2_header": false
+        }
+      },
+      "11104565113590962351": {
+        "type": "shopify://apps/tinyseo/blocks/article-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "15154131639906026026": {
+        "type": "shopify://apps/tinyseo/blocks/broken-link-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "2353461558643755616": {
+        "type": "shopify://apps/tinyseo/blocks/breadcrumbs-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "11089864892113081655": {
+        "type": "shopify://apps/tinyseo/blocks/website-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "1360768219604461044": {
+        "type": "shopify://apps/tinyseo/blocks/store-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "14971748854670876780": {
+        "type": "shopify://apps/tinyseo/blocks/product-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "1369284949797581044": {
+        "type": "shopify://apps/tinyseo/blocks/collection-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
         "disabled": false,
         "settings": {}
       }
