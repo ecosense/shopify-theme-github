@@ -19,7 +19,7 @@
 
 {%- if form.errors -%}
 
-  {%- if form.errors.translated_fields | size == 1 and form.errors.first == 'form' -%}
+  {%- if form.errors.translated_fields and form.errors.first == 'form' -%}
     <p class="form-message" tabindex="-1" data-form-status>
       {{ form.errors.messages['form'] }}
     </p>
@@ -58,3 +58,14 @@
     </div>
   {%- endif -%}
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- if form.errors.translated_fields | size == 1 and form.errors.first ==
+    'form' -%}"
+  to: "{%- if form.errors.translated_fields and form.errors.first == 'form' -%}"
+  position: 833..905
+{% endcomment %}

@@ -161,7 +161,7 @@
             </div>
           {%- endif -%}
 
-          {% capture "form_classes" -%}
+          {% capture form_classes -%}
             product-form product-form-{{ section.id }}
             {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
             {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
@@ -722,4 +722,13 @@
 <div style="clear:both;"></div><div id="opinew-reviews-product-page-code" class="opw-widget-wrapper-default">
                 <span id="opinew-plugin" data-server-address="https://api.opinew.com" data-opw-prodreviews="{{ product.metafields.opinew_metafields['product_plugin'] }}" data-opinew-shop-id="{{ shop.id }}" data-shop-url="{{shop.domain}}" data-platform-product-id="{{product.id}}">
                  <span id="opinew_product_plugin_app"></span>
-                </span></div>
+                </span></div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% capture "form_classes" -%}'
+  to: "{% capture form_classes -%}"
+  position: 8712..8739
+{%- endcomment -%}
